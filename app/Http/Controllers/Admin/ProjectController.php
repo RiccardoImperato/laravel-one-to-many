@@ -39,7 +39,7 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::slug($data['title']);
         $project->save();
-        return redirect()->route('admin.projects.index', $project)->with('message', "Progetto $project->title creato!");
+        return redirect()->route('admin.projects.index', $project)->with('message', "Progetto $project->title creato correttamente");
     }
 
     /**
