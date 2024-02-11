@@ -7,6 +7,11 @@
     </div>
     <div>
         <h3>{{ $project->title }}</h3>
+        @if ($project->project_img)
+            <div>
+                <img src="{{ asset('storage/' . $project->project_img) }}">
+            </div>
+        @endif
         <p>{{ $project->description }}</p>
         <h5><span class="badge text-bg-dark">{{ $project->type?->title }}</span></h5>
     </div>
