@@ -2,7 +2,7 @@
 
 @section('content')
     <a href="{{ route('admin.projects.index') }}" class="btn btn-primary btn-sm my-3">Indietro</a>
-    <form action="{{ route('admin.projects.store') }}" method="POST">
+    <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
@@ -21,6 +21,13 @@
                     </option>
                 @endforeach
             </select>
+        </div>
+        <div class="mb-3">
+            <label for="project_img" class="form-label">Immagine</label>
+            <input type="file" class="form-control @error('project_img') is-invalid @enderror" name="project_img">
+            @error('project_img')
+                <div class="alert alert-danger mt-3">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
