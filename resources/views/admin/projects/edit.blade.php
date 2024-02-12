@@ -9,7 +9,7 @@
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
-                value="{{ $project->title }}">
+                value="{{ old('title', $project->title) }}">
             @error('title')
                 <div class="alert alert-danger mt-3">{{ $message }}</div>
             @enderror
@@ -27,7 +27,7 @@
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" name="description" style="height: 100px">{{ $project->description }}</textarea>
+            <textarea class="form-control @error('description') is-invalid @enderror" name="description" style="height: 100px">{{ old('description', $project->description) }}</textarea>
             @error('description')
                 <div class="alert alert-danger mt-3">{{ $message }}</div>
             @enderror

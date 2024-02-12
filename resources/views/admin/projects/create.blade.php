@@ -6,21 +6,25 @@
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
+                value="{{ old('title') }}">
             @error('title')
                 <div class="alert alert-danger mt-3">{{ $message }}</div>
             @enderror
         </div>
         <div class="mb-3">
-            <label for="type" class="form-label">Tipo</label>
-            <select class="form-select" name="type_id">
-                <option selected>Seleziona un tipo</option>
+            <label for="type_id" class="form-label">Tipo</label>
+            <select class="form-select @error('type_id') is-invalid @enderror" name="type_id">
+                <option value="">Seleziona un tipo</option>
                 @foreach ($types as $type)
                     <option value="{{ $type->id }}" @if (old('type_id') == $type->id) selected @endif>
                         {{ $type->title }}
                     </option>
                 @endforeach
             </select>
+            @error('type_id')
+                <div class="alert alert-danger mt-3">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="project_img" class="form-label">Immagine</label>
@@ -31,7 +35,7 @@
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" name="description" style="height: 100px"></textarea>
+            <textarea class="form-control @error('description') is-invalid @enderror" name="description" style="height: 100px">{{ old('description') }}</textarea>
             @error('description')
                 <div class="alert alert-danger mt-3">{{ $message }}</div>
             @enderror
